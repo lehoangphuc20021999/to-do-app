@@ -7,18 +7,21 @@ const Todo = (props) => {
         index,
         todoEditingId,
         getTodoEditingId,
+        getTodoRemovingId,
         onEditTodo,
-        markCompleted,
-        removeTodo
+        checkCompleted,
+        setShowModal
     } = props
 
     const [text, setText] = useState(todo.text)
     const isEditing = todoEditingId === todo.id
 
     const editTodo = () => {
+        const trimText = text.trim()
+
         onEditTodo({
             ...todo,
-            text
+            text: trimText
         }, index)
     }
 
@@ -31,10 +34,13 @@ const Todo = (props) => {
                             className='toggle'
                             type='checkbox'
                             checked={todo.isCompleted}
-                            onChange={() => markCompleted(todo.id)}
+                            onChange={() => checkCompleted(todo.id)}
                         />
                         <label onDoubleClick={() => getTodoEditingId(todo.id)}>{todo.text}</label>
-                        <button className='destroy' onClick={() => removeTodo(todo.id)}></button>
+                        <button className='destroy' onClick={() => {
+                            setShowModal(true);
+                            getTodoRemovingId(todo.id)
+                        }}></button>
                     </div> :
                     <input
                         className='edit'
@@ -59,9 +65,10 @@ Todo.defaultProps = {
     index: null,
     todoEditingId: null,
     getTodoEditingId: () => { },
+    getTodoRemovingId: () => { },
     onEditTodo: () => { },
-    markCompleted: () => { },
-    removeTodo: () => { }
+    checkCompleted: () => { },
+    setShowModal: () => { }
 }
 
 Todo.propTypes = {
@@ -69,9 +76,10 @@ Todo.propTypes = {
     index: PropTypes.number,
     todoEditingId: PropTypes.number,
     getTodoEditingId: PropTypes.func,
+    getTodoRemovingId: PropTypes.func,
     onEditTodo: PropTypes.func,
-    markCompleted: PropTypes.func,
-    removeTodo: PropTypes.func
+    checkCompleted: PropTypes.func,
+    setShowModal: PropTypes.func
 }
 
 export default Todo;

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom'
 
 const FilterBtn = props => {
     const {
@@ -11,13 +12,13 @@ const FilterBtn = props => {
 
     return (
         <li>
-            <a
-                href={`#/${link}`}
+            <Link
+                to={`#/${link}`}
                 className={`${isActived ? 'selected' : ''}`}
                 onClick={onClick}
             >
                 {title}
-            </a>
+            </Link>
         </li>
     )
 }

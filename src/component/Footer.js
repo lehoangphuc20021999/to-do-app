@@ -8,9 +8,9 @@ const Footer = (props) => {
     const {
         status,
         statusFilter,
-        clearCompleted,
         numOfTodos,
-        numOfTodosLeft
+        numOfTodosLeft,
+        setShowModal
     } = props
 
     const filterBtns = [{
@@ -47,25 +47,25 @@ const Footer = (props) => {
                     ))
                 }
             </ul>
-            {numOfTodos > numOfTodosLeft && <button className='footer__clear--completed' onClick={clearCompleted}>Clear completed</button>}
+            {numOfTodos > numOfTodosLeft && <button className='footer__clear--completed' onClick={() => setShowModal(true)}>Clear completed</button>}
         </footer>
     );
 };
 
 Footer.defaultProps = {
     status: '',
-    statusFilter: () => { },
-    clearCompleted: () => { },
     numOfTodos: null,
-    numOfTodosLeft: null
+    numOfTodosLeft: null,
+    statusFilter: () => { },
+    setShowModal: () => { }
 }
 
 Footer.propTypes = {
-    status: PropTypes.string.isRequired,
+    status: PropTypes.string,
     statusFilter: PropTypes.func,
-    clearCompleted: PropTypes.func,
     numOfTodos: PropTypes.number,
-    numOfTodosLeft: PropTypes.number
+    numOfTodosLeft: PropTypes.number,
+    setShowModal: PropTypes.number
 }
 
 export default Footer;

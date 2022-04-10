@@ -9,10 +9,11 @@ const TodoList = (props) => {
         todoList,
         todoEditingId,
         getTodoEditingId,
+        getTodoRemovingId,
         onEditTodo,
-        markCompleted,
+        checkCompleted,
         checkAllTodos,
-        removeTodo
+        setShowModal
     } = props
 
     return (
@@ -27,10 +28,11 @@ const TodoList = (props) => {
                                     index={index}
                                     todoEditingId={todoEditingId}
                                     getTodoEditingId={getTodoEditingId}
+                                    getTodoRemovingId={getTodoRemovingId}
                                     onEditTodo={onEditTodo}
-                                    markCompleted={markCompleted}
+                                    checkCompleted={checkCompleted}
                                     checkAllTodos={checkAllTodos}
-                                    removeTodo={removeTodo}
+                                    setShowModal={setShowModal}
                                 />
                             ))
                         }
@@ -45,20 +47,21 @@ TodoList.defaultProps = {
     todoList: [],
     todoEditingId: null,
     getTodoEditingId: () => { },
+    getTodoRemovingId: () => { },
     onEditTodo: () => { },
-    markCompleted: () => { },
+    checkCompleted: () => { },
     checkAllTodos: () => { },
-    removeTodo: () => { }
+    setShowModal: () => { }
 }
 
 TodoList.propTypes = {
-    todoList: PropTypes.array.isRequired,
+    todoList: PropTypes.array,
     todoEditingId: PropTypes.number,
     getTodoEditingId: PropTypes.func,
     onEditTodo: PropTypes.func,
-    markCompleted: PropTypes.func,
+    checkCompleted: PropTypes.func,
     checkAllTodos: PropTypes.func,
-    removeTodo: PropTypes.func
+    setShowModal: PropTypes.func,
 }
 
 export default TodoList;

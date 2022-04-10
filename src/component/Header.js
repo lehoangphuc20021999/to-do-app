@@ -27,17 +27,17 @@ const Header = (props) => {
             <h1>{title}</h1>
             <header className='header'>
                 <input
-                    className='toggle-all'
+                    className='header__toggle-all'
                     type='checkbox'
                     checked={isCheckedAll}
-                    defaultChecked
+                    onChange={() => { }}
                 />
                 <label
-                    htmlFor='toggle-all'
+                    htmlFor='header__toggle-all'
                     onClick={checkAllTodos}
                 ></label>
                 <input
-                    className='new-to-do'
+                    className='header__new-to-do'
                     value={text}
                     onChange={(e) => setText(e.target.value)}
                     onKeyPress={onAddTodo}
@@ -56,7 +56,7 @@ Header.defaultProps = {
 }
 
 Header.propTypes = {
-    title: PropTypes.string.isRequired,
+    title: PropTypes.string,
     isCheckedAll: PropTypes.bool,
     addTodo: PropTypes.func,
     checkAllTodos: PropTypes.func
