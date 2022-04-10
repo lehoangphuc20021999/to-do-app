@@ -63,9 +63,9 @@ Footer.defaultProps = {
 Footer.propTypes = {
     status: PropTypes.string,
     statusFilter: PropTypes.func,
+    setShowModal: PropTypes.func,
     numOfTodos: PropTypes.number,
     numOfTodosLeft: PropTypes.number,
-    setShowModal: PropTypes.number
 }
 
 export default Footer;
