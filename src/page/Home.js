@@ -81,6 +81,7 @@ function Home() {
         localStorage.setItem('todolist', convertToJSONFormat(result))
     }
 
+    // Delete
     const getTodoRemovingId = (id) => {
         setTodoRemovingId(id)
     }
