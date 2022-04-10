@@ -1,5 +1,6 @@
 Not done yet:
-- The persistent
-- Paginations and Bulk check box.
+- Paginations
 Bonus:
-+ I enhanced feature filter to make to-do-app can choose all or only active, completed
+- Storage the after refresh
+- Confirm when do a danger actions (like delete)
+- Clean code SCSS and React
